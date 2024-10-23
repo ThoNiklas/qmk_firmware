@@ -9,11 +9,11 @@
         "command": false,
         "console": false,
         "extrakey": true,
-        "mousekey": true,
+        "mousekey": false,
         "nkro": true
     },
     "matrix_pins": {
-        "cols": ["B2", "B3", "B6", "D7", "B4", "B5"], // Pinky, Ring, Middle, Index, Inner, Thumb
+        "cols": ["B2", "B3", "B6", "E6", "B4", "B5"], // Pinky, Ring, Middle, Index, Inner, Thumb
         "rows": ["F4", "F5", "F6", "D4", "C6", "D7"]  // Left: Top, Home, Bottom // Right: Top, Home, Bottom
     },
     "url": "",

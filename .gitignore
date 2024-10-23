@@ -1,3 +1,4 @@
+
 # Junk files
 *.bak
 *.swp
@@ -69,6 +70,7 @@ CMakeLists.txt
 *.code-workspace
 .stfolder
 .tags
+.vscode
 .vscode/c_cpp_properties.json
 .vscode/ipch/
 .vscode/last.sql
@@ -120,3 +122,5 @@ compile_commands.json
 via*.json
 /keyboards/**/keymaps/via/*
 /keyboards/**/keymaps/vial/*
+
+*.lnk
