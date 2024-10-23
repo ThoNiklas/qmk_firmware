@@ -22,6 +22,20 @@
         "pid": "0x0000",
         "vid": "0xFEED"
     },
+    "macros": [
+        [
+            {"action":"tap", "keycodes": ["KC_COMM", "KC_SPC"]}
+        ],
+        [
+            {"action": "tap", "keycodes": ["KC_DOT", "KC_SPC", "OSM(MOD_LSFT)"]}
+        ],
+        [
+            {"action": "tap", "keycodes": ["KC_QUES", "KC_SPC", "OSM(MOD_LSFT)"]}
+        ],
+        [
+            {"action": "tap", "keycodes": ["KC_EXLM", "KC_SPC", "OSM(MOD_LSFT)"]}
+        ]
+    ],
     "layouts": {
         "LAYOUT_ortho_staggered": {
             "layout": [
