@@ -18,14 +18,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       *         │Tab│Spc│Ent│       │Sft│Bsp│Esc│
       *         └───┴───┴───┘       └───┴───┴───┘ 
       *      
-      * For layout: Thumb keys are the sixth column, Outer key is top row, middle key is middle row and inner key is bottom row
+      * For layout: Thumb keys are the sixth column, Outer key is bottom row, middle key is middle row and inner key is top row
       *             The right hand sight is mirrored on the vertical axis and wired as row 3,4,5                
       */
     // Base
     [0] = LAYOUT_ortho_staggered(
-        KC_Q,     KC_W,       KC_F,       KC_P,       KC_B,      MT(MOD_MEH,KC_ENT), 
+        KC_Q,     KC_W,       KC_F,       KC_P,       KC_B,      LCTL_T(KC_TAB), 
         KC_A,     KC_R,       KC_S,       KC_T,       KC_G,      LT(3, KC_SPC),
-        KC_Z,     KC_X,       KC_C,       KC_D,       KC_V,      LCTL_T(KC_TAB), 
+        KC_Z,     KC_X,       KC_C,       KC_D,       KC_V,      MT(MOD_MEH,KC_ENT), 
 
         KC_TAB,   KC_Y,       KC_U,       KC_L,       KC_J,      KC_LSFT,
         KC_O,     KC_I,       KC_E,       KC_N,       KC_M,      LT(4, KC_BSPC),
