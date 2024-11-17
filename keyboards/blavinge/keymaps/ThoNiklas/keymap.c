@@ -5,6 +5,10 @@
 #include "keymap_german.h"
 #include "keymap_swedish.h"
 
+enum custom_keycodes {
+    TEST = SAFE_RANGE,
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      /*
       * ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
@@ -23,9 +27,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       */
     // Base
     [0] = LAYOUT_ortho_staggered(
-        KC_Q,     KC_W,       KC_F,       KC_P,       KC_B,      LCTL_T(KC_TAB), 
+        KC_Q,     KC_W,       KC_F,       KC_P,       KC_B,      MT(MOD_MEH,KC_ENT), 
         KC_A,     KC_R,       KC_S,       KC_T,       KC_G,      LT(3, KC_SPC),
-        KC_Z,     KC_X,       KC_C,       KC_D,       KC_V,      MT(MOD_MEH,KC_ENT), 
+        KC_Z,     KC_X,       KC_C,       KC_D,       KC_V,      LCTL_T(KC_TAB), 
 
         KC_TAB,   KC_Y,       KC_U,       KC_L,       KC_J,      KC_LSFT,
         KC_O,     KC_I,       KC_E,       KC_N,       KC_M,      LT(4, KC_BSPC),
@@ -33,9 +37,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     // Sym
     [1] = LAYOUT_ortho_staggered(
-        KC_GT,    KC_RCBR,    KC_RBRC,    KC_RPRN,    KC_BSLS,   KC_DQUO,                
+        KC_GT,    KC_RCBR,    KC_RBRC,    KC_RPRN,    KC_BSLS,   KC_UNDS,                
         KC_LT,    KC_LCBR,    KC_LBRC,    KC_LPRN,    KC_SLSH,   KC_QUOT,                
-        KC_HASH,  KC_DLR,     KC_QUES,    KC_EXLM,    KC_PIPE,   KC_UNDS,  
+        KC_HASH,  KC_DLR,     KC_QUES,    KC_EXLM,    KC_PIPE,   KC_DQUO,  
 
         KC_AT,    KC_NO,      KC_NO,      KC_CIRC,    KC_TILD,   KC_DOT,               
         KC_SCLN,  KC_COLN,    KC_NO,      KC_ASTR,    KC_PERC,   KC_COMM,               
@@ -43,13 +47,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     // misc
     [2] = LAYOUT_ortho_staggered(
-        KC_NO,    KC_NO,      KC_NO,                    KC_NO,          KC_NO,     KC_NO,                         
-        KC_ARNG,  KC_UDIA,    KC_ODIA,                  KC_ADIA,        KC_NO,     KC_NO,                        
-        KC_NO,    KC_NO,      "QK_MACRO_2",             "QK_MACRO_3",   KC_NO,     KC_NO, 
+        TEST,    KC_NO,      KC_NO,                    KC_NO,          KC_NO,     KC_NO,                         
+        SE_ARNG,  DE_UDIA,    DE_ODIA,                  DE_ADIA,        KC_NO,     KC_NO,                        
+        KC_NO,    KC_NO,      KC_NO,                    KC_NO,          KC_NO,     KC_NO, 
 
-        KC_NO,    KC_NO,      KC_NO,      KC_NO,      KC_NO,     "QK_MACRO_1",
-        KC_NO,    KC_NO,      KC_NO,      KC_NO,      KC_NO,     "QK_MACRO_0", 
-        KC_NO,    MO(2),      KC_NO,      KC_NO,      KC_NO,     KC_NO
+        KC_NO,    KC_NO,      KC_NO,      KC_NO,      KC_NO,     KC_NO,
+        KC_NO,    KC_NO,      KC_NO,      KC_NO,      KC_NO,     KC_NO, 
+        KC_NO,    KC_NO,      KC_NO,      KC_NO,      KC_NO,     KC_NO
     ),
     // Nav
     [3] = LAYOUT_ortho_staggered(
@@ -63,12 +67,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     // Num
     [4] = LAYOUT_ortho_staggered(
-        KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,   KC_ENT,                                     
+        KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,   KC_TAB,                                      
         KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,  KC_SPC,                                    
-        KC_F11,   KC_F12,   KC_F13,   KC_PSCR,  KC_PAUS, KC_TAB,  
+        KC_F11,   KC_F12,   KC_F13,   KC_PSCR,  KC_PAUS, KC_ENT, 
 
         KC_BSPC,  KC_P9,    KC_P8,    KC_P7,    KC_PMNS, KC_NO,
         KC_DOT,   KC_P6,    KC_P5,    KC_P4,    KC_P0,   MO(4),
         KC_PCMM,  KC_P3,    KC_P2,    KC_P1,    KC_PPLS, KC_NO       
     )
 };
+
+bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+    switch(keycode) {
+        case TEST:
+            if (record->event.pressed) {
+                SEND_STRING("TEST");
+            }
+            return false;
+    }
+    return true;
+}
+
