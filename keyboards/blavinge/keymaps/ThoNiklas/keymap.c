@@ -7,6 +7,15 @@
 
 enum custom_keycodes {
     TEST = SAFE_RANGE,
+    DOTUP,
+};
+
+enum {
+    TD_DOT_COMM = 0,
+};
+
+tap_dance_action_t tap_dance_actions[] = {
+    [TD_DOT_COMM] = ACTION_TAP_DANCE_DOUBLE(KC_DOT, KC_COMM)
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -27,11 +36,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       */
     // Base
     [0] = LAYOUT_ortho_staggered(
-        KC_Q,     KC_W,       KC_F,       KC_P,       KC_B,      MT(MOD_MEH,KC_ENT), 
+        KC_Q,     KC_W,       KC_F,       KC_P,       KC_B,      MT(MOD_LSFT,KC_ENT), 
         KC_A,     KC_R,       KC_S,       KC_T,       KC_G,      LT(3, KC_SPC),
         KC_Z,     KC_X,       KC_C,       KC_D,       KC_V,      LCTL_T(KC_TAB), 
 
-        KC_TAB,   KC_Y,       KC_U,       KC_L,       KC_J,      KC_LSFT,
+        KC_TAB,   KC_Y,       KC_U,       KC_L,       KC_J,      TD(TD_DOT_COMM),
         KC_O,     KC_I,       KC_E,       KC_N,       KC_M,      LT(4, KC_BSPC),
         KC_SCLN,  MO(2),      MO(1),      KC_H,       KC_K,      LGUI_T(KC_ESCAPE)                           
     ),
@@ -43,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
         KC_AT,    KC_NO,      KC_NO,      KC_CIRC,    KC_TILD,   KC_DOT,               
         KC_SCLN,  KC_COLN,    KC_NO,      KC_ASTR,    KC_PERC,   KC_COMM,               
-        KC_GRV,   KC_PLUS,    MO(1),      KC_PEQL,    KC_AMPR,   KC_MINS                                                         
+        KC_GRV,   KC_PLUS,    MO(1),      KC_EQL,    KC_AMPR,   KC_MINS                                                         
     ),
     // misc
     [2] = LAYOUT_ortho_staggered(
@@ -82,6 +91,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         case TEST:
             if (record->event.pressed) {
                 SEND_STRING("TEST");
+            }
+            return false;
+        case DOTUP:
+            if (record->event.pressed) {
+                SEND_STRING(". ");
+                add_oneshot_mods(MOD_BIT(KC_LSFT));
             }
             return false;
     }
