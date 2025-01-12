@@ -21,14 +21,14 @@ tap_dance_action_t tap_dance_actions[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      /*
       * ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
-      * │ Q │ W │ F │ P │ B │       │ J │ L │ U │ Y │tab│
+      * │ Q     │ W   │  E     │  R    │  T   │       │   Y    │  U    │   I   │   O   │   P   │
       * ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
-      * │ A │ R │ S │ T │ G │       │ M │ N │ E │ I │ O │
+      * │ A     │  S    │   D   │   F   │   G   │       │  H   │   J    │   K   │   L    │   ;   │
       * ├───┼───┼───┼───┼───┤       ├───┼───┼───┼───┼───┤
-      * │ Z │ X │ C │ D │ V │       │ K │ H │L1 │L2 │ ; │
+      * │ Z     │ X     │ C     │  V   │   B   │       │   N   │  M   │  L1  │  L2   │  tab │
       * └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
       *         ┌───┬───┬───┐       ┌───┬───┬───┐
-      *         │Tab│Spc│Ent│       │Sft│Bsp│Esc│
+      *         │Tab   |   Spc │  Ent │       │ Sft   │ Bsp │  Esc  │
       *         └───┴───┴───┘       └───┴───┴───┘ 
       *      
       * For layout: Thumb keys are the sixth column, Outer key is bottom row, middle key is middle row and inner key is top row
